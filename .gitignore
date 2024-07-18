@@ -1,0 +1,10 @@
+*build/
+
+win64/dxc/**/arm64/
+win64/dxc/**/x86/
+
+win64/SDL3/**/*.cmake
+win64/SDL3/**/*.exp
+win64/SDL3/**/*.pdb
+win64/SDL3/**/pkg*
+win64/SDL3/**/*_test*
