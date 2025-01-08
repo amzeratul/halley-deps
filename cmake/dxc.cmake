@@ -34,18 +34,17 @@ if (WIN32)
         ${CMAKE_CURRENT_SOURCE_DIR}/win64/dxc/bin/x64/dxil.dll
     )
 
-    if (EXISTS "$ENV{GXDKLatest}gameKit/Include/XboxOne/dxcapi_x.h")
+    if (EXISTS "$ENV{GXDKLatest}gameKit/Include/XboxOne/dxcapi_x.h" AND
+        EXISTS "$ENV{GXDKLatest}gameKit/symbols/XboxOne/dxcompiler_x.dll" AND
+        EXISTS "$ENV{GXDKLatest}gameKit/symbols/XboxOne/sc_dll.dll" AND
+        EXISTS "$ENV{GXDKLatest}gameKit/symbols/XboxOne/scdxil.dll" AND
+        EXISTS "$ENV{GXDKLatest}gameKit/symbols/XboxOne/newbe.dll")
         # dxcompiler_x.lib and dxcompiler_x.dll
-        add_library(dxc_x SHARED IMPORTED GLOBAL)
+        add_library(dxc_x UNKNOWN IMPORTED GLOBAL)
         target_include_directories(
             dxc_x
             INTERFACE
             $ENV{GXDKLatest}gameKit/Include/XboxOne
-        )
-        set_property(
-            TARGET dxc_x
-            PROPERTY IMPORTED_IMPLIB
-            $ENV{GXDKLatest}gameKit/lib/amd64/XboxOne/dxcompiler_x.lib
         )
         set_property(
             TARGET dxc_x
@@ -77,18 +76,16 @@ if (WIN32)
         set(DXC_X_FOUND 0)
     endif()
 
-    if (EXISTS "$ENV{GXDKLatest}gameKit/Include/Scarlett/dxcapi_xs.h")
+    if (EXISTS "$ENV{GXDKLatest}gameKit/Include/Scarlett/dxcapi_xs.h" AND
+        EXISTS "$ENV{GXDKLatest}gameKit/symbols/Scarlett/dxcompiler_xs.dll" AND
+        EXISTS "$ENV{GXDKLatest}gameKit/symbols/Scarlett/xbsc_xs.dll" AND
+        EXISTS "$ENV{GXDKLatest}gameKit/symbols/Scarlett/newbe_xs.dll")
         # dxcompiler_xs.lib and dxcompiler_xs.dll
-        add_library(dxc_xs SHARED IMPORTED GLOBAL)
+        add_library(dxc_xs UNKNOWN IMPORTED GLOBAL)
         target_include_directories(
             dxc_xs
             INTERFACE
             $ENV{GXDKLatest}gameKit/Include/Scarlett
-        )
-        set_property(
-            TARGET dxc_xs
-            PROPERTY IMPORTED_IMPLIB
-            $ENV{GXDKLatest}gameKit/lib/amd64/Scarlett/dxcompiler_xs.lib
         )
         set_property(
             TARGET dxc_xs
