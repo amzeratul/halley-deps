@@ -1,2 +1,8 @@
 win64/dxc/**/arm64/
 win64/dxc/**/x86/
+
+win64/SDL3/cmake/
+win64/SDL3/**/*.exp
+win64/SDL3/**/*.pdb
+sdl3.pc
+SDL3_test.lib
